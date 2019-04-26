@@ -23,11 +23,12 @@ end
 def self.find(id, db)
   selected = db.execute("SELECT * FROM pokemon WHERE id = ?", id).flatten
   self.new(id:id, name:selected[1], type:selected[2], db:db, hp:selected[3])
-  
+
 end
 
 def alter_hp(new_hp, db)
   db.execute("UPDATE pokemon SET hp = ? WHERE id = ?", new_hp, self.id)
+  binding.pry
 end
 
 
